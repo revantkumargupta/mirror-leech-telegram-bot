@@ -244,7 +244,7 @@ class TaskListener(TaskConfig):
             )
 
     async def onUploadComplete(
-        self, link, files, folders, mime_type, dir_id=""
+        self, link, files, folders, mime_type,rclonePath="", dir_id=""
     ):
         if (
             self.isSuperChat
@@ -278,7 +278,7 @@ class TaskListener(TaskConfig):
                 msg += f"\n<b>Files: </b>{files}"
             if (
                 link
-                or rclonePath
+               # or rclonePath
                 and config_dict["RCLONE_SERVE_URL"]
                 and not self.privateLink
             ):
