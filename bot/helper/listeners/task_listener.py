@@ -286,7 +286,8 @@ class TaskListener(TaskConfig):
                 if link:
                     buttons.ubutton("☁️ Cloud Link", link)
                 else:
-                    msg += f"\n\nPath: <code>{rclonePath}</code>"
+                  #  msg += f"\n\nPath: <code>{rclonePath}</code>"
+                    pass
                 if (
                     rclonePath
                     and (RCLONE_SERVE_URL := config_dict["RCLONE_SERVE_URL"])
