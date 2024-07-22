@@ -276,46 +276,46 @@ class TaskListener(TaskConfig):
             if mime_type == "Folder":
                 msg += f"\n<b>SubFolders: </b>{folders}"
                 msg += f"\n<b>Files: </b>{files}"
-            if (
-                link
+      #      if (
+    #            link
                # or rclonePath
-                and config_dict["RCLONE_SERVE_URL"]
-                and not self.privateLink
-            ):
-                buttons = ButtonMaker()
-                if link:
-                    buttons.ubutton("☁️ Cloud Link", link)
-                else:
+      #          and config_dict["RCLONE_SERVE_URL"]
+      #          and not self.privateLink
+      #      ):
+         #       buttons = ButtonMaker()
+         #       if link:
+         #           buttons.ubutton("☁️ Cloud Link", link)
+         #       else:
                   #  msg += f"\n\nPath: <code>{rclonePath}</code>"
-                    pass
-                if (
-                    rclonePath
-                    and (RCLONE_SERVE_URL := config_dict["RCLONE_SERVE_URL"])
-                    and not self.privateLink
-                ):
-                    remote, path = rclonePath.split(":", 1)
-                    url_path = rutils.quote(f"{path}")
-                    share_url = f"{RCLONE_SERVE_URL}/{remote}/{url_path}"
-                    if mime_type == "Folder":
-                        share_url += "/"
-                    buttons.ubutton("🔗 Rclone Link", share_url)
-                if not rclonePath and dir_id:
-                    INDEX_URL = ""
-                    if self.privateLink:
-                        INDEX_URL = self.userDict.get("index_url", "") or ""
-                    elif config_dict["INDEX_URL"]:
-                        INDEX_URL = config_dict["INDEX_URL"]
-                    if INDEX_URL:
-                        share_url = f"{INDEX_URL}findpath?id={dir_id}"
-                        buttons.ubutton("⚡ Index Link", share_url)
-                        if mime_type.startswith(("image", "video", "audio")):
-                            share_urls = f"{INDEX_URL}findpath?id={dir_id}&view=true"
-                            buttons.ubutton("🌐 View Link", share_urls)
-                button = buttons.build_menu(2)
-            else:
-                msg += f"\n\nPath: <code>{rclonePath}</code>"
-                button = None
-            msg += f"\n\n<b>cc: </b>{self.tag}"
+         #           pass
+         #       if (
+         #           rclonePath
+         #           and (RCLONE_SERVE_URL := config_dict["RCLONE_SERVE_URL"])
+         #           and not self.privateLink
+          #      ):
+                 #   remote, path = rclonePath.split(":", 1)
+                  #  url_path = rutils.quote(f"{path}")
+                  #  share_url = f"{RCLONE_SERVE_URL}/{remote}/{url_path}"
+                 #   if mime_type == "Folder":
+                 #       share_url += "/"
+                 #   buttons.ubutton("🔗 Rclone Link", share_url)
+           #     if not rclonePath and dir_id:
+           #         INDEX_URL = ""
+             #       if self.privateLink:
+             #           INDEX_URL = self.userDict.get("index_url", "") or ""
+             #       elif config_dict["INDEX_URL"]:
+           #             INDEX_URL = config_dict["INDEX_URL"]
+           #         if INDEX_URL:
+          #              share_url = f"{INDEX_URL}findpath?id={dir_id}"
+          #              buttons.ubutton("⚡ Index Link", share_url)
+          #              if mime_type.startswith(("image", "video", "audio")):
+          #                  share_urls = f"{INDEX_URL}findpath?id={dir_id}&view=true"
+          #                  buttons.ubutton("🌐 View Link", share_urls)
+         #       button = buttons.build_menu(2)
+         #   else:
+         #       msg += f"\n\nPath: <code>{rclonePath}</code>"
+          #      button = None
+        #    msg += f"\n\n<b>cc: </b>{self.tag}"
             await sendMessage(self.message, msg, button)
         if self.seed:
             if self.newDir:
