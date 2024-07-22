@@ -244,7 +244,7 @@ class TaskListener(TaskConfig):
             )
 
     async def onUploadComplete(
-        self, link, files, folders, mime_type, rclonePath="", dir_id=""
+        self, link, files, folders, mime_type,
     ):
         if (
             self.isSuperChat
