@@ -315,7 +315,7 @@ class TaskListener(TaskConfig):
          #   else:
          #       msg += f"\n\nPath: <code>{rclonePath}</code>"
                 button = None
-        #    msg += f"\n\n<b>cc: </b>{self.tag}"
+            msg += f"\n\n<b>cc: </b>{self.tag}"
             await sendMessage(self.message, msg, button)
         if self.seed:
             if self.newDir:
