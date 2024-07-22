@@ -314,7 +314,7 @@ class TaskListener(TaskConfig):
          #       button = buttons.build_menu(2)
          #   else:
          #       msg += f"\n\nPath: <code>{rclonePath}</code>"
-          #      button = None
+                button = None
         #    msg += f"\n\n<b>cc: </b>{self.tag}"
             await sendMessage(self.message, msg, button)
         if self.seed:
